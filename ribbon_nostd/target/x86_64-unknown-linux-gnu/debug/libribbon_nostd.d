@@ -1,0 +1,1 @@
+/extra/code/emb/fusion-matrix/ribbon_nostd/target/x86_64-unknown-linux-gnu/debug/libribbon_nostd.rlib: /extra/code/emb/fusion-matrix/ribbon_nostd/src/lib.rs /extra/code/emb/fusion-matrix/ribbon_nostd/src/ribbon.rs
