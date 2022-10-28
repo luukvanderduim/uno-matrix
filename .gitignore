@@ -1,3 +1,5 @@
 Cargo.lock
-/target
 **/*.rs.bk
+font/target
+ribbon/target
+matrix/target

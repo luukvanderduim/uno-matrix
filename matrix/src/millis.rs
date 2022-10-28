@@ -23,9 +23,17 @@ use panic_halt as _;
 // ║      1024 ║          125 ║              8 ms ║
 // ║      1024 ║          250 ║             16 ms ║
 // ╚═══════════╩══════════════╩═══════════════════╝
-const PRESCALER: u32 = 1024;
-const TIMER_COUNTS: u32 = 125;
+//
 
+//  The PRESCALER and the TIMER_COUNTS allow youto make the trade-off between
+//  CPU utilization and timer resolution / precision.
+//
+//  The prescaler divides the clock frequency (ALso known as a 'Clock divider')
+//  Then the timer counts until TIMER_COUNTS is reached, before the timer counter overflows and 'fires' an interrupt.
+//  The Overflow_Interval indicates the resolution of the timer.
+
+const PRESCALER: u32 = 1024;
+const TIMER_COUNTS: u32 = 250;
 const MILLIS_INCREMENT: u32 = PRESCALER * TIMER_COUNTS / 16000;
 
 static MILLIS_COUNTER: avr_device::interrupt::Mutex<cell::Cell<u32>> =
@@ -60,6 +68,6 @@ fn TIMER0_COMPA() {
     })
 }
 
-pub(crate) fn millis() -> u32 {
+pub fn millis() -> u32 {
     avr_device::interrupt::free(|cs| MILLIS_COUNTER.borrow(cs).get())
 }

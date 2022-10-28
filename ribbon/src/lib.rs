@@ -10,7 +10,7 @@ mod tests {
         for i in 0..7 {
             print!("{}", if (c >> (7 - i)) & 0x01 == 1 { "@" } else { "." });
         }
-        print!("\n");
+        println!();
     }
 
     #[test]

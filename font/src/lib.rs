@@ -40,7 +40,7 @@ impl Character {
     /// Manipulates the font data to go from rowwise to columnwise ordering.
     ///
     /// One Could also say the represented character is rotated by 90 degrees.
-    pub fn as_columns(&mut self) -> Character {
+    pub fn rotate90(&mut self) -> Character {
         let mul = [128, 64, 32, 16, 8, 4, 2, 1];
         let mut cols = [0u8; 8];
         for (i, col) in cols.iter_mut().enumerate() {
@@ -51,7 +51,7 @@ impl Character {
         }
         cols.reverse();
         self.0 = cols;
-        self.clone()
+        *self
     }
 
     /// On all bytes, each bit is evaluated left-to-right.

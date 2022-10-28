@@ -6,11 +6,12 @@
 
 use font::Character;
 
+use std::fs::File;
 use std::io::prelude::*;
+use std::io::BufWriter;
 use std::path::Path;
-use std::{fs::File, io::BufWriter};
 
-const SENTENCE: &str = "Luuk is hip!";
+const SENTENCE: &str = "Ferris Rocks!";
 const LEN: usize = SENTENCE.len() * 8;
 
 fn main() -> std::io::Result<()> {
@@ -18,8 +19,7 @@ fn main() -> std::io::Result<()> {
 
     for c in SENTENCE.chars() {
         let byte_block: String = Character::get(c)
-            .as_columns()
-            .flip_horizontal()
+            .rotate90()
             .inner()
             .iter()
             .map(|b| format!("\t\t{:#010b},\n", b))
@@ -28,16 +28,17 @@ fn main() -> std::io::Result<()> {
     }
 
     let path = Path::new("src/").join("ribbon.rs");
-    let nostd_path = Path::new("../ribbon_nostd/src/").join("ribbon.rs");
+    let matrix_path = Path::new("../matrix/src/").join("ribbon.rs");
     let mut f = BufWriter::new(File::create(&path)?);
-    let mut g = BufWriter::new(File::create(&nostd_path)?);
+    let mut h = BufWriter::new(File::create(&matrix_path)?);
     write!(
         f,
         "pub const SEQUENCE: [u8; {}] = [\n{}\n];\n",
         LEN, byte_seq
     )?;
+
     write!(
-        g,
+        h,
         "pub const SEQUENCE: [u8; {}] = [\n{}\n];\n",
         LEN, byte_seq
     )
