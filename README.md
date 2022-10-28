@@ -1,6 +1,6 @@
 # uno-matrix
 
-Embedded Rust toy-project to displays scrolling text on an 8x8 LED matrix display with an Arduino Uno (compatible) board.
+Embedded Rust toy-project to display text, scrolling, on an 8x8 LED matrix display with an Arduino Uno (compatible) board.
 
 ## Components
 
