@@ -11,7 +11,7 @@ The following components are used:
 * a shift register 74HC595
 * eight ~220 Ohm resistors
 
-You would also need a bread-board and a bunch of jumper wires.
+Other requirements include a bread board and a bunch of jumper wires.
 
 ## Rust
 
@@ -20,13 +20,13 @@ See [the fine rust-lang web page](https://www.rust-lang.org/) for more informati
 
 ## HAL and prerequisites
 
-Uno-matrix uses the [avr-hal](https://github.com/Rahix/avr-hal) by Rahix, a Hardware Abstraction Layer for AVR microcontrollers and common boards (for example Arduino). Based on the avr-device crate.
+Uno-matrix uses the [avr-hal](https://github.com/Rahix/avr-hal) by Rahix, a Hardware Abstraction Layer for AVR microcontroller devices (for example Arduino).
 
 As `uno-matrix` builds on `avr-hal` one should follow its [quickstart](https://github.com/Rahix/avr-hal#quickstart) guide to get going.
 
 ## Installation
 
-To run you clone this repository:
+Clone this repository:
 
 ```Bash
 git clone https://github.com/luukvanderduim/uno-matrix.git
@@ -39,12 +39,12 @@ cd uno-matrix/matrix/
 RAVEDUDE_PORT=/dev/ttyUSB0 cargo r
 ```
 
-Note: Your Arduino (compatible) may be mapped to a different tty.
+Note: Your Arduino (compatible) may be mapped to a different `/dev/ttyXXX`.
 
 ## Usage
 
 The `ribbon` crate provides a `build.rs` script which generates the data to be scrolled.
-You can alter the text message  there too. Just look for:
+You can alter the text message there too. Just look for:
 
 ``` Rust
 const SENTENCE: &str = "Ferris Rocks!";
