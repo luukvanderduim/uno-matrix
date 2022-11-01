@@ -36,10 +36,17 @@ Enter the directory where the binary resides and build and load the binary to th
 
 ```
 cd uno-matrix/matrix/
-RAVEDUDE_PORT=/dev/ttyUSB0 cargo r
+cargo r
 ```
 
-Note: Your Arduino (compatible) may be mapped to a different `/dev/ttyXXX`.
+If you encounter this error:
+
+```Bash
+Programming target/avr-atmega328p/debug/matrix.elf => /dev/ttyUSB0
+avrdude: ser_open(): can't open device "/dev/ttyUSB0": No such file or directory
+```
+
+Your Arduino (compatible) may be mapped to a different `/dev/ttyXXX` and you can change the default in `matrix/.cargo/config.toml`.
 
 ## Usage
 

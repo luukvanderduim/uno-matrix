@@ -22,7 +22,6 @@ features = ["atmega328p", "rt"]
 
 [dependencies.arduino-hal]
 git = "https://github.com/rahix/avr-hal"
-rev = "8e4ba8f"
 features = ["rt", "arduino-uno"]
 
 [dependencies.embedded-hal]
@@ -38,7 +37,7 @@ opt-level = "s"
 [profile.release]
 panic = "abort"
 codegen-units = 1
-debug = true
+debug = false
 lto = true
 opt-level = "s"
 
